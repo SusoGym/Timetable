@@ -27,15 +27,17 @@
   <body class="grey lighten-2">
     <div class="navbar-fixed" id="header">
       <nav>
-        <div class="nav-wrapper red">
+        <div class="nav-wrapper red" >
           <a class="brand-logo center">Vertretungsplan</a>
           <ul id="nav-mobile" class="right" style="white-space:nowrap;">
+              <li>
+                  <span class="hide-on-med-and-down" style="margin-right: 15px">Stand: <?php echo getUpdateTime($usr, $pwd)->format("d.m.Y H:i:s");?></span>
+              </li>
             <li>
                     <span class="hide-on-med-and-down"><?php
-
                         if(isSuperUser())
                         {
-                            echo "<i title='SuperUser' class='material-icons left' style='font-size: 15px;'>adb</i> $usr, $grade";
+                            echo "<i title='SuperUser' class='material-icons left' style='font-size: 15px; margin-right: 2px'>adb</i> $usr, $grade";
                         }else{
                             echo "$usr, $grade";
                         }

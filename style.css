@@ -47,3 +47,13 @@
   top: 0px;
   right: 0px;
 }
+
+.red
+{
+    background-color: #86160e !important;
+}
+
+.red-text
+{
+    color: #cd190e !important;
+}

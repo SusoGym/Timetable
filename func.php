@@ -27,6 +27,34 @@ function get_grade($usr, $pwd) {
   return $class;
 }
 
+function getUpdateTime($usr, $pwd)
+{
+    $data = base64_encode($usr . ":" . $pwd);
+    $ch = curl_init();
+    $headers = array(
+        'Authorization: Basic ' . $data
+    );
+    curl_setopt($ch, CURLOPT_URL, "https://intranet.suso.schulen.konstanz.de/gpuntis/");
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+    curl_setopt($ch, CURLOPT_SSL_CIPHER_LIST, 'TLSv1');
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // --> Insecure! But not ssl good be this page on
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    if (curl_errno($ch)) {
+        return null;
+    }
+    $result = utf8_encode(curl_exec($ch));
+    if($result == "")
+        return null;
+
+    $lines = explode("\n", $result);
+    $line = $lines[17];
+    $innerBrackets = explode(")", explode("(", $line)[1])[0];
+    $timeAndDate = explode(": ", $innerBrackets)[1];
+    $date = date_create_from_format("d.m.Y H:i:s", $timeAndDate);
+    return $date;
+}
+
 function sortData($data, $crit) {
     $sortArray = array();
     foreach($data as $key => $array) {
