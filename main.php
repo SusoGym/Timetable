@@ -54,7 +54,7 @@
           <?php if(isSuperUser()): ?>
           <ul id="nav-mobile" class="left">
               <a title="Toggle show all classes" id="toggle_show_all">
-                  <i class="material-icons left" id="superuser_icon"><?php if(isset($_SESSION["disp_all"])) echo "people"; else echo "person"; ?></i>
+                  <i class="material-icons left" id="toggle_display_all_icon"><?php if(isset($_SESSION["disp_all"])) echo "people"; else echo "person"; ?></i>
               </a>
           </ul>
           <?php endif; ?>
@@ -81,7 +81,7 @@
                   <table class="striped responsive-table">
                   <thead>
                     <tr>
-                        <?php if(isset($_SESSION['disp_all'])) { echo "<th>Klasse</th>"; }; ?>
+                        <?php if(isset($_SESSION['disp_all']) || isset($_GET["class"])) { echo "<th>Klasse</th>"; }; ?>
                         <th>Stunde</th>
                         <th>Lehrer</th>
                         <th>Fach</th>
@@ -94,7 +94,7 @@
                   <tbody>
                   <?php } ?>
                     <tr <?php if($lastClass != $class) echo "style='border-top: 2px solid gray'"; ?>>
-                      <?php if(isset($_SESSION['disp_all'])) {echo "<td>" . (($entry["class"] == "") ? "&#8203;" : $entry["class"]) . "</td>";} ?>
+                      <?php if(isset($_SESSION['disp_all']) ||isset($_GET["class"])) {echo "<td>" . (($entry["class"] == "") ? "&#8203;" : $entry["class"]) . "</td>";} ?>
                       <td><?php echo ($entry["hour"] == "") ? "&#8203;" : $entry["hour"] ?></td>
                       <td><?php echo ($entry["newteacher"] == "") ? "&#8203;" : $entry["newteacher"] ?></td>
                       <td><?php echo ($entry["newsubject"] == "") ? "&#8203;" : $entry["newsubject"] ?></td>
@@ -104,6 +104,7 @@
                       <td><?php echo ($entry["comment"] == "") ? "&#8203;" : $entry["comment"] ?></td>
                     </tr>
                     <?php
+                        $lastClass = $class;
                         }
                       }
                   if ($x >> 0) {
@@ -137,10 +138,10 @@
 
         function toggleShowAll()
         {
-            if( $('#superuser_icon').length == 0)
+            if( $('#toggle_display_all_icon').length == 0)
                 return;
 
-            var isShown = $('#superuser_icon')[0].innerText == "people";
+            var isShown = $('#toggle_display_all_icon')[0].innerText == "people";
             var url = 'setsession.php?disp_all=' + (isShown ? "-remove-" : "true");
 
             jQuery('#div_session_write').load(url);

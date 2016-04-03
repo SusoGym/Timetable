@@ -107,10 +107,20 @@ function error($errno, $errtxt) {
 function checkClassToDisplay($class, $userClass)
 {
 
-    if(isSuperUser() && isset($_SESSION["disp_all"]))
-        return true;
+    if (isSuperUser() && isset($_GET["class"])) {
+        $errorrep_lvl = error_reporting();
+        error_reporting(0);
+        $regex = $_GET["class"];
+        $regex = preg_replace('/(?!\.)\*/', ".*", $regex);
 
-    if(isSuperUser() && isset($_GET["class"]) && $class == $_GET["class"])
+        if (preg_match_all("/" . $regex . "/", $class, $match)) {
+            error_reporting($errorrep_lvl);
+            return true;
+        }
+        error_reporting($errorrep_lvl);
+}
+
+    if(isSuperUser() && isset($_SESSION["disp_all"]) && !isset($_GET["class"]))
         return true;
 
     if($class == $userClass)
