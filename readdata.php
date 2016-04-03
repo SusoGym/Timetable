@@ -18,6 +18,7 @@ function readdata($usr, $pwd) {
   $lines = explode("\r\n", ($result));
   unset($lines[sizeof($lines)-1]);
   $resultArray = array();
+  
   foreach($lines as $key => $line)
   {
       $splinter = explode(";", $line);
