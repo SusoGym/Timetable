@@ -132,7 +132,7 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
     <script type="application/javascript">
-      $('#footer').css('margin-top',$(document).height() - ($('#header').height() + $('#main').height()  ) - $('#footer').height() - 28);
+      $('#footer').css('margin-top',$(document).height() - ($('#header').height() + $('#main').height()  ) - $('#footer').height() - 27);
     </script>
     <script type="application/javascript">
 
