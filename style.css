@@ -57,3 +57,13 @@
 {
     color: #cd190e !important;
 }
+
+.bestfit
+{
+    white-space: nowrap;
+}
+div .col, div .row{
+
+    border: 1px solid;
+
+}
