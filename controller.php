@@ -22,7 +22,7 @@ class Controller
      * @param array $input
      */
     public function handleInput($input)
-    {
+    { //TODO: LOGIN!!
         $lessons = self::$model->getLessons();
 
         $this->sortByLesson($lessons);

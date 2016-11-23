@@ -5,7 +5,8 @@
     include "header.php";
 ?>
 <body class="grey lighten-2">
-<div class="navbar" id="header">
+<!-- HEADER -->
+<header class="navbar" id="header">
     <nav>
         <div class="nav-wrapper red">
             <a class="brand-logo center">Vertretungsplan</a>
@@ -15,10 +16,10 @@
                         <i class="material-icons right">power_settings_new</i>
                     </a>
                 </li>
-        </div>
-        </ul>
+            </ul>
     </nav>
-</div>
+</header>
+<!-- BODY -->
 <div class="container" id="main">
     <?php
         /**
@@ -31,13 +32,14 @@
             ?>
             <div class="hoverable card white">
                 <div class="card-content">
-                    <span class="card-title red-text"><i
-                            class="material-icons">date_range</i>&nbsp;&nbsp;<?php echo $date; ?>:</span>
+                        <span class="card-title red-text"><i
+                                class="material-icons">date_range</i>&nbsp;&nbsp;<?php echo $date; ?>:</span>
                     <?php include "main_table.php"; ?>
                 </div>
             </div>
         <?php } ?>
 </div>
+<!-- FOOTER -->
 <footer id="footer" class="page-footer grey darken-3">
     <div class="footer-copyright">
         <div class="container">
@@ -48,7 +50,6 @@
     </div>
 </footer>
 
-<div id='div_session_write' style="visibility: hidden"></div>
 <?php include "js.php"; ?>
 
 </body>
