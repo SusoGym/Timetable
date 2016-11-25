@@ -73,7 +73,8 @@ class Model
      */
     public function getAllSubjects()
     {
-        return array("SP", "EN2", "EN4", "DE1", "M2", /* ... */);
+        return array("M3", "EN4", "PH", "GK", "DE3", "CH1", "GE3", "INF", "ETH", "SEM2", "MU1");
+        //return array("SP", "EN2", "EN4", "DE1", "M2", "SP", "M1" /* ... */);
     }
 
     /**

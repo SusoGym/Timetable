@@ -36,15 +36,13 @@
 <?php /** @var Lesson $lesson */
     foreach ($lessons as $lesson)
     { ?>
-        <div class="row hide-on-med-and-up">
-            <div class="col s3 center-align"><span class="bestfit"><?php echo $lesson->getHour() ?></span></div>
-            <div class="col s3 center-align"><span class="bestfit"><?php echo $lesson->getCancelledSubject() ?></span>
+        <div class="row hide-on-med-and-up data-table">
+            <div class="col s3 center-align data-table"><span class="bestfit"><?php echo $lesson->getHour() ?></span></div>
+            <div class="col s3 center-align data-table"><span class="bestfit"><?php echo $lesson->getCancelledSubject() ?></span>
             </div>
-            <div class="col s3 center-align"><span class="bestfit"><?php echo $lesson->getSubTeacher() ?></span></div>
-            <div class="col s3 center-align"><span class="bestfit"><?php echo $lesson->getSubRoom() ?></span></div>
-            <div class="col s12 center-align"><span class=""><?php echo $lesson->getComment() ?></span></div>
+            <div class="col s3 center-align data-table"><span class="bestfit"><?php echo $lesson->getSubTeacher() ?></span></div>
+            <div class="col s3 center-align data-table"><span class="bestfit"><?php echo $lesson->getSubRoom() ?></span></div>
+            <div class="col s12 center-align data-table"><span class=""><?php echo $lesson->getComment() ?></span></div>
         </div>
-        <?php// if ($lesson != $lessons[sizeof($lessons) - 1]): ?>
-        <!--<div class="col divider" style="margin-bottom: 20px"></div> -->
-    <?php //endif;
+        <?php
     } ?>

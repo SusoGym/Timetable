@@ -2,6 +2,9 @@
 class Controller
 {
 
+    const TPL_LOGIN = "login";
+    const TPL_OVERVIEW = "overview";
+
     protected $dataForView = array();
 
     /**
@@ -23,20 +26,45 @@ class Controller
      */
     public function handleInput($input)
     { //TODO: LOGIN!!
-        $lessons = self::$model->getLessons();
 
+        $this->showOverview();
+        die(); //TODO let the magic happen
+
+        if(!isset($input['type']))
+        {
+            $this->display(self::TPL_LOGIN);
+            return;
+        }
+
+        $type = $input['type'];
+
+
+        switch ($type)
+        {
+            case 'login':
+                break;
+            default:
+                $this->display(self::TPL_LOGIN);
+                break;
+        }
+
+
+    }
+
+    public function showOverview()
+    {
+        $lessons = self::$model->getLessons();
         $this->sortByLesson($lessons);
         $this->compactDuplicate($lessons);
 
         $lessonsByDate = array();
+
         /** @var Lesson $lesson */
         foreach ($lessons as $lesson)
             $lessonsByDate[$this->getDayDescription($lesson->getDate())][] = $lesson;
 
         $this->dataForView['lessons'] = $lessonsByDate;
-
-        $this->display("main");
-
+        $this->display(self::TPL_OVERVIEW);
     }
 
     /**
