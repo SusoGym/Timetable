@@ -32,17 +32,19 @@
 </table>
 
 <!-- TABLE FOR SMALL DISPLAYS -->
-
+<div class="collection hide-on-med-and-up">
 <?php /** @var Lesson $lesson */
-    foreach ($lessons as $lesson)
-    { ?>
-        <div class="row hide-on-med-and-up data-table">
-            <div class="col s3 center-align data-table"><span class="bestfit"><?php echo $lesson->getHour() ?></span></div>
-            <div class="col s3 center-align data-table"><span class="bestfit"><?php echo $lesson->getCancelledSubject() ?></span>
-            </div>
-            <div class="col s3 center-align data-table"><span class="bestfit"><?php echo $lesson->getSubTeacher() ?></span></div>
-            <div class="col s3 center-align data-table"><span class="bestfit"><?php echo $lesson->getSubRoom() ?></span></div>
-            <div class="col s12 center-align data-table"><span class=""><?php echo $lesson->getComment() ?></span></div>
+    foreach ($lessons as $lesson) { ?>
+        <div class="collection-item">
+          <div class="row hide-on-med-and-up" style="margin-bottom: 0px;">
+              <div class="col s3 center-align"><span class="truncate"><?php echo $lesson->getHour() ?></span></div>
+              <div class="col s3 center-align"><span class="truncate"><?php echo $lesson->getCancelledSubject() ?></span>
+              </div>
+              <div class="col s3 center-align"><span class="truncate"><?php echo $lesson->getSubTeacher() ?></span></div>
+              <div class="col s3 center-align"><span class="truncate"><?php echo $lesson->getSubRoom() ?></span></div>
+              <div class="col s12 center-align"><span class="truncate"><?php echo $lesson->getComment() ?></span></div>
+          </div>
         </div>
-        <?php
-    } ?>
+
+    <?php } ?>
+  </div>

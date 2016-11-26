@@ -68,7 +68,3 @@
 .bestfit {
     white-space: nowrap;
 }
-
-div .col.data-table, div .row.data-table {
-    border: 1px solid;
-}
